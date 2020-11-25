@@ -3,7 +3,7 @@ Projetos para consolidar os conhecimentos em eletrônica, assim como, aprofundar
 
 Versão utilizada: 9.5.2
 
-#Projetos
+# Projetos
 
 ## Circuitos Digitais
 * Decodificador para display de 7 segmentos de 2 bits
