@@ -1,0 +1,94 @@
+* SpiceNetList
+* 
+* Exported from decodificador.sch at 25/11/2020 21:43
+* 
+* EAGLE Version 9.5.2 Copyright (c) 1988-2019 Autodesk, Inc.
+* 
+.TEMP=25.000000
+* --------- .OPTIONS ---------
+* --------- .PARAMS ---------
+
+* --------- devices ---------
+X_X5 B B/ INV 
+X_X10 A SG BUFFER 
+X_X8 SA SD BUFFER 
+X_X6 P SB BUFFER 
+X_X4 A B P N DRIVERD4_1 
+X_X7 A/ B SC OR2 
+X_X9 B/ SE BUFFER 
+X_X1 A B/ SA OR2 
+X_X2 A/ B/ SF AND2 
+X_X3 A A/ INV 
+
+* --------- models ---------
+
+* model file: Base: C:/Users/Administrador/Documents/EAGLE/projects/eagle-projects/Decodificador-2-bits-DSP7Seg/DRIVERD4.mdl, DRIVERD4_1
+
+**********************
+* autodesk eagle - spice model file
+**********************
+.SUBCKT DRIVERD4_1 n1 n2 n3 n4
+a_source [n1 n2 n3 n4] d_source4
+.model d_source4 d_source (input_file="C:/Users/Administrador/Documents/EAGLE/projects/eagle-projects/Decodificador-2-bits-DSP7Seg/driverd4_1.dsource.txt")
+.ENDS DRIVERD4_1
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT INV IN OUT
+a1 IN OUT inv1
+.model inv1 d_inverter(rise_delay = 1n fall_delay = 1n)
+.ENDS INV
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT OR2 A B OUT
+a1 [A B] OUT or2
+.model or2 d_or(rise_delay = 1n fall_delay = 1n)
+.ENDS OR2
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT BUFFER IN OUT
+a1 IN OUT dbuf
+.model dbuf d_buffer (rise_delay = 1e-9 fall_delay = 1e-9 input_load = 0.5e-12)
+.ENDS BUFFER
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT AND2 A B OUT
+a1 [A B] OUT and2
+.model and2 d_and(rise_delay = 1n fall_delay = 1n)
+.ENDS AND2
+
+
+* --------- simulation ---------
+.print DC DIG(A) DIG(B) DIG(SA) DIG(SB) DIG(SC) DIG(SD) DIG(SE) DIG(SF) DIG(SG)
+.print AC DIG(A) DIG(B) DIG(SA) DIG(SB) DIG(SC) DIG(SD) DIG(SE) DIG(SF) DIG(SG)
+.print TRAN DIG(A) DIG(B) DIG(SA) DIG(SB) DIG(SC) DIG(SD) DIG(SE) DIG(SF) DIG(SG)
+.END
+
+
+
+
+
+
+
+
+
+

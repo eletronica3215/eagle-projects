@@ -1,0 +1,119 @@
+* SpiceNetList
+* 
+* Exported from decodificador.sch at 25/11/2020 21:43
+* 
+* EAGLE Version 9.5.2 Copyright (c) 1988-2019 Autodesk, Inc.
+* 
+.TEMP=25.0
+
+* --------- .OPTIONS ---------
+.OPTIONS ABSTOL=1e-12 GMIN=1e-12 PIVREL=1e-3 ITL1=100 ITL2=50 PIVTOL=1e-13 RELTOL=1e-3 VNTOL=1e-6 CHGTOL=1e-15 ITL4=10 METHOD=TRAP SRCSTEPS=0 TRTOL=7 NODE
+
+* --------- .PARAMS ---------
+
+* --------- devices ---------
+X_X5 B B/ INV 
+X_X10 A SG BUFFER 
+X_X8 SA SD BUFFER 
+X_X6 P SB BUFFER 
+X_X4 A B P N DRIVERD4_1 
+X_X7 A/ B SC OR2 
+X_X9 B/ SE BUFFER 
+X_X1 A B/ SA OR2 
+X_X2 A/ B/ SF AND2 
+X_X3 A A/ INV 
+
+X_D1 A DIG_A DTOAB1
+X_D2 B DIG_B DTOAB1
+X_D3 SA DIG_SA DTOAB1
+X_D4 SB DIG_SB DTOAB1
+X_D5 SC DIG_SC DTOAB1
+X_D6 SD DIG_SD DTOAB1
+X_D7 SE DIG_SE DTOAB1
+X_D8 SF DIG_SF DTOAB1
+X_D9 SG DIG_SG DTOAB1
+* --------- models ---------
+
+* model file: Base: C:/Users/Administrador/Documents/EAGLE/projects/eagle-projects/Decodificador-2-bits-DSP7Seg/DRIVERD4.mdl, DRIVERD4_1
+
+**********************
+* autodesk eagle - spice model file
+**********************
+.SUBCKT DRIVERD4_1 n1 n2 n3 n4
+a_source [n1 n2 n3 n4] d_source4
+.model d_source4 d_source (input_file="C:/Users/Administrador/Documents/EAGLE/projects/eagle-projects/Decodificador-2-bits-DSP7Seg/driverd4_1.dsource.txt")
+.ENDS DRIVERD4_1
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT INV IN OUT
+a1 IN OUT inv1
+.model inv1 d_inverter(rise_delay = 1n fall_delay = 1n)
+.ENDS INV
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT OR2 A B OUT
+a1 [A B] OUT or2
+.model or2 d_or(rise_delay = 1n fall_delay = 1n)
+.ENDS OR2
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT BUFFER IN OUT
+a1 IN OUT dbuf
+.model dbuf d_buffer (rise_delay = 1e-9 fall_delay = 1e-9 input_load = 0.5e-12)
+.ENDS BUFFER
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT AND2 A B OUT
+a1 [A B] OUT and2
+.model and2 d_and(rise_delay = 1n fall_delay = 1n)
+.ENDS AND2
+
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT DTOAB1 D A
+abridge [D] [A] dac_buff
+ .model dac_buff dac_bridge(out_low = 0.3 out_high = 2.5)
+.ENDS DTOAB1
+
+* --------- simulation ---------
+
+
+.control
+set filetype=ascii
+TRAN 0.02 4 0 0.02 
+write decodificador.sch.sim V(DIG_A) V(DIG_B) V(DIG_SA) V(DIG_SB) V(DIG_SC) V(DIG_SD) V(DIG_SE) V(DIG_SF) V(DIG_SG)
+.endc
+
+.END
+
+
+
+
+
+
+
+
+
+

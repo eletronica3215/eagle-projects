@@ -1,0 +1,36 @@
+
+Circuit: * spicenetlist
+
+Reducing trtol to 1 for xspice 'A' devices
+Doing analysis at TEMP = 0.000000 and TNOM = 27.000000
+
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+dig_a                                      0.3
+dig_b                                      0.3
+dig_sa                                     2.5
+dig_sb                                     2.5
+dig_sc                                     2.5
+dig_sd                                     2.5
+dig_se                                     2.5
+dig_sf                                     2.5
+dig_sg                                     0.3
+a.x_d9.abridge#branch_1_0                    0
+a.x_d8.abridge#branch_1_0                    0
+a.x_d7.abridge#branch_1_0                    0
+a.x_d6.abridge#branch_1_0                    0
+a.x_d5.abridge#branch_1_0                    0
+a.x_d4.abridge#branch_1_0                    0
+a.x_d3.abridge#branch_1_0                    0
+a.x_d2.abridge#branch_1_0                    0
+a.x_d1.abridge#branch_1_0                    0
+
+
+No. of Data Rows : 333
+ASCII raw file
+
+Note: No ".plot", ".print", or ".fourier" lines; no simulations run
