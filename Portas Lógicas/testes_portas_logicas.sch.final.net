@@ -1,0 +1,134 @@
+* SpiceNetList
+* 
+* Exported from testes_portas_logicas.sch at 27/11/2020 20:48
+* 
+* EAGLE Version 9.5.2 Copyright (c) 1988-2019 Autodesk, Inc.
+* 
+.TEMP=25.0
+
+* --------- .OPTIONS ---------
+.OPTIONS ABSTOL=1e-12 GMIN=1e-12 PIVREL=1e-3 ITL1=100 ITL2=50 PIVTOL=1e-13 RELTOL=1e-3 VNTOL=1e-6 CHGTOL=1e-15 ITL4=10 METHOD=TRAP SRCSTEPS=0 TRTOL=7 NODE
+
+* --------- .PARAMS ---------
+
+* --------- devices ---------
+X_X7 A B XOR XOR2 
+X_X8 A B N_3 XOR2 
+X_X9 N_3 XNOR INV 
+X_X1 A B POS NEG DRIVERD4_1 
+X_X3 POS NOT INV 
+X_X6 A B NAND NAND 
+X_X2 A B AND AND2 
+X_X5 A B NOR NOR 
+X_X4 A B OR OR2 
+
+X_D1 A DIG_A DTOAB1
+X_D2 B DIG_B DTOAB1
+X_D3 AND DIG_AND DTOAB1
+* --------- models ---------
+
+* model file: Base: C:/Users/Administrador/Documents/EAGLE/projects/eagle-projects/Portas Lógicas/DRIVERD4.mdl, DRIVERD4_1
+
+**********************
+* autodesk eagle - spice model file
+**********************
+.SUBCKT DRIVERD4_1 n1 n2 n3 n4
+a_source [n1 n2 n3 n4] d_source4
+.model d_source4 d_source (input_file="C:/Users/Administrador/Documents/EAGLE/projects/eagle-projects/Portas Lógicas/driverd4_1.dsource.txt")
+.ENDS DRIVERD4_1
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT AND2 A B OUT
+a1 [A B] OUT and2
+.model and2 d_and(rise_delay = 1n fall_delay = 1n)
+.ENDS AND2
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT XOR2 A B OUT
+a1 [A B] OUT xor2
+.model xor2 d_xor(rise_delay = 1n fall_delay = 1n)
+.ENDS XOR2
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT OR2 A B OUT
+a1 [A B] OUT or2
+.model or2 d_or(rise_delay = 1n fall_delay = 1n)
+.ENDS OR2
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT NOR A B OUT
+a1 [A B] OUT nor
+.model nor d_nor(rise_delay = 1n fall_delay = 1n)
+.ENDS NOR
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT NAND A B OUT
+a1 [A B] OUT nand
+.model nand d_nand(rise_delay = 1n fall_delay = 1n)
+.ENDS NAND
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT INV IN OUT
+a1 IN OUT inv1
+.model inv1 d_inverter(rise_delay = 1n fall_delay = 1n)
+.ENDS INV
+
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT DTOAB1 D A
+abridge [D] [A] dac_buff
+ .model dac_buff dac_bridge(out_low = 0.3 out_high = 2.5)
+.ENDS DTOAB1
+
+* --------- simulation ---------
+
+
+.control
+set filetype=ascii
+TRAN 0.02 4 0 0.02 
+write testes_portas_logicas.sch.sim V(DIG_A) V(DIG_B) V(DIG_AND)
+.endc
+
+.END
+
+
+
+
+
+
+
+
+
+

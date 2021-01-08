@@ -1,0 +1,4 @@
+0 0s 1s 1s 0s
+1 0s 0s 1s 0s
+2 1s 1s 1s 0s
+3 1s 0s 1s 0s

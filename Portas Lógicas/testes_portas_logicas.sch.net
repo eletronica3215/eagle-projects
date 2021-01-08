@@ -1,0 +1,115 @@
+* SpiceNetList
+* 
+* Exported from testes_portas_logicas.sch at 27/11/2020 20:48
+* 
+* EAGLE Version 9.5.2 Copyright (c) 1988-2019 Autodesk, Inc.
+* 
+.TEMP=25.000000
+* --------- .OPTIONS ---------
+* --------- .PARAMS ---------
+
+* --------- devices ---------
+X_X7 A B XOR XOR2 
+X_X8 A B N_3 XOR2 
+X_X9 N_3 XNOR INV 
+X_X1 A B POS NEG DRIVERD4_1 
+X_X3 POS NOT INV 
+X_X6 A B NAND NAND 
+X_X2 A B AND AND2 
+X_X5 A B NOR NOR 
+X_X4 A B OR OR2 
+
+* --------- models ---------
+
+* model file: Base: C:/Users/Administrador/Documents/EAGLE/projects/eagle-projects/Portas Lógicas/DRIVERD4.mdl, DRIVERD4_1
+
+**********************
+* autodesk eagle - spice model file
+**********************
+.SUBCKT DRIVERD4_1 n1 n2 n3 n4
+a_source [n1 n2 n3 n4] d_source4
+.model d_source4 d_source (input_file="C:/Users/Administrador/Documents/EAGLE/projects/eagle-projects/Portas Lógicas/driverd4_1.dsource.txt")
+.ENDS DRIVERD4_1
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT AND2 A B OUT
+a1 [A B] OUT and2
+.model and2 d_and(rise_delay = 1n fall_delay = 1n)
+.ENDS AND2
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT XOR2 A B OUT
+a1 [A B] OUT xor2
+.model xor2 d_xor(rise_delay = 1n fall_delay = 1n)
+.ENDS XOR2
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT OR2 A B OUT
+a1 [A B] OUT or2
+.model or2 d_or(rise_delay = 1n fall_delay = 1n)
+.ENDS OR2
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT NOR A B OUT
+a1 [A B] OUT nor
+.model nor d_nor(rise_delay = 1n fall_delay = 1n)
+.ENDS NOR
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT NAND A B OUT
+a1 [A B] OUT nand
+.model nand d_nand(rise_delay = 1n fall_delay = 1n)
+.ENDS NAND
+
+
+* (model found in library)
+
+**********************
+* Autodesk EAGLE - SPICE Model File
+**********************
+.SUBCKT INV IN OUT
+a1 IN OUT inv1
+.model inv1 d_inverter(rise_delay = 1n fall_delay = 1n)
+.ENDS INV
+
+
+* --------- simulation ---------
+.print DC DIG(A) DIG(B) DIG(AND)
+.print AC DIG(A) DIG(B) DIG(AND)
+.print TRAN DIG(A) DIG(B) DIG(AND)
+.END
+
+
+
+
+
+
+
+
+
+
